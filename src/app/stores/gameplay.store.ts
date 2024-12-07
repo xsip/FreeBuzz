@@ -136,7 +136,7 @@ export const GamePlayStore = signalStore(
 
         return {
           ...state,
-          recentlyPlayedSongs: [state.selectedPlayList.items.findIndex(e => e.title === rightAnswer!.title)],
+          recentlyPlayedSongs: [...state.recentlyPlayedSongs, state.selectedPlayList.items.findIndex(e => e.title === rightAnswer!.title)],
           round: {
             ...state.round,
             possibleAnswers,

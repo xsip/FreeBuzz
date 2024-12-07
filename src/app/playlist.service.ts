@@ -19,7 +19,6 @@ export class PlaylistService {
   dialogStore = inject(DialogStore);
   selectPlaylist(file: { path: string; name: string; }) {
     this.gamePlayStore.setSelectedPlayList(JSON.parse(fs.readFileSync(file.path, 'utf-8')), true);
-
     this.setupDone = true;
   }
 

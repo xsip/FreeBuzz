@@ -93,7 +93,7 @@ function createWindow() {
         }
         c({ cancel: false, responseHeaders: d.responseHeaders });
     });
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
     win.setResizable(true);
     if (serve) {
         //    debug.default();

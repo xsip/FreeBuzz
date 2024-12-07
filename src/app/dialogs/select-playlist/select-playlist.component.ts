@@ -66,7 +66,7 @@ import {DialogComponent} from '../../ui/dialog/dialog.component';
   `,
   styles: ``
 })
-export class SelectPlaylistComponent {
+export class SelectPlaylistComponent implements OnInit{
 
   playlistService = inject(PlaylistService);
   gamePlayStore = inject(GamePlayStore);
@@ -78,5 +78,10 @@ export class SelectPlaylistComponent {
     this.canFetch = !!value;
     this.cdr.detectChanges();
     console.log(this.canFetch);
+  }
+
+  ngOnInit() {
+    // this.playlistService.loadFromFilePath('C:\\FreeBuzz');
+
   }
 }
