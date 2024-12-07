@@ -1,0 +1,39 @@
+{
+  "asar": true,
+  "directories": {
+    "output": "release/"
+  },
+  "files": [
+    "**/*",
+    "!**/*.ts",
+    "!*.map",
+    "!package.json",
+    "!package-lock.json",
+    {
+      "from": "../dist",
+      "filter": ["**/*"]
+    }
+  ],
+  "win": {
+    "icon": "icons/png",
+    "target": [
+      "nsis",
+      "msi"
+    ]
+  },
+  "portable": {
+    "splashImage": "icons/png/1024x1024.png"
+  },
+  "mac": {
+    "icon": "icons/png",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "icon": "icons/png",
+    "target": [
+      "AppImage"
+    ]
+  }
+}

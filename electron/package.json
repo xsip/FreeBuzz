@@ -1,0 +1,9 @@
+{
+  "name": "angular-electron-wrapper",
+  "description": "Angular Electron wrapper",
+  "version": "0.1",
+  "main": "dist/main.js",
+  "private": true,
+  "dependencies": {
+  }
+}
