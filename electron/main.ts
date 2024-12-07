@@ -54,6 +54,7 @@ ipcMain.handle('close', () => {
 ipcMain.handle('minimize', () => {
   win!.minimize();
 })
+let server : ReturnType<typeof http['createServer']>;
 function createWindow(): BrowserWindow {
 
   const size = screen.getPrimaryDisplay().workAreaSize;
@@ -107,7 +108,7 @@ function createWindow(): BrowserWindow {
       pathIndex = '../dist/index.html';
     }
 //at start
-    let server;
+
     server = http.createServer((req, res) => {
       if(req.url?.includes('.js.map')) {
 
@@ -164,6 +165,9 @@ try {
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
+    if(server) {
+      server.close();
+    }
     // On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {
@@ -180,6 +184,7 @@ try {
 
     }
   });
+
 
 } catch (e) {
   // Catch Error

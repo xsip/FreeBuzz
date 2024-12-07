@@ -60,6 +60,7 @@ electron_1.ipcMain.handle('close', () => {
 electron_1.ipcMain.handle('minimize', () => {
     win.minimize();
 });
+let server;
 function createWindow() {
     const size = electron_1.screen.getPrimaryDisplay().workAreaSize;
     // Create the browser window.
@@ -107,7 +108,6 @@ function createWindow() {
             pathIndex = '../dist/index.html';
         }
         //at start
-        let server;
         server = http.createServer((req, res) => {
             var _a;
             if ((_a = req.url) === null || _a === void 0 ? void 0 : _a.includes('.js.map')) {
@@ -158,6 +158,9 @@ try {
     electron_1.app.on('ready', () => setTimeout(createWindow, 400));
     // Quit when all windows are closed.
     electron_1.app.on('window-all-closed', () => {
+        if (server) {
+            server.close();
+        }
         // On OS X it is common for applications and their menu bar
         // to stay active until the user quits explicitly with Cmd + Q
         if (process.platform !== 'darwin') {
